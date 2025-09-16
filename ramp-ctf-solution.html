@@ -60,6 +60,12 @@
         box-sizing: border-box;
       }
 
+      .url-masked {
+        -webkit-text-security: disc;
+        text-security: disc;
+        font-family: monospace;
+      }
+
       button {
         padding: 10px 20px;
         background-color: #00ff00;
@@ -157,8 +163,9 @@
         <input
           type="text"
           id="urlInput"
+          class="url-masked"
           placeholder="Enter extracted URL here..."
-          value="••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+          value="https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/636865"
         />
         <button id="captureBtn" onclick="captureFlag()">CAPTURE FLAG</button>
       </div>
@@ -234,8 +241,8 @@
         const flagLength = document.getElementById("flagLength");
         const flagTitle = document.getElementById("flagTitle");
 
-        // Use the actual URL regardless of what's shown in input (dots)
-        const url = "https://wgg522pwivhvi5gqsn675gth3q0otdja.lambda-url.us-east-1.on.aws/636865";
+        // Use the actual URL from the input field
+        const url = urlInput.value.trim();
 
         if (isCapturing) {
           return;
